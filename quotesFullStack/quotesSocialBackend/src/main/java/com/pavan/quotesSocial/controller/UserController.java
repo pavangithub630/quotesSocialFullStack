@@ -66,10 +66,10 @@ public class UserController {
 	}
 	
 	@PutMapping(value = "/add-freind/{userId}/{freindId}")
-	public ResponseEntity<User> addUser(@PathVariable Long userId, @PathVariable Long freindId) {
+	public ResponseEntity<List<User>> addUser(@PathVariable Long userId, @PathVariable Long freindId) {
 
-		User user2 = userService.addFriend(userId, freindId);
-		return new ResponseEntity<User>(user2, HttpStatus.OK);
+		List<User> user2 = userService.addFriend(userId, freindId);
+		return new ResponseEntity<List<User>>(user2, HttpStatus.OK);
 
 	}
 	

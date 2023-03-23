@@ -51,15 +51,24 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User addFriend(Long userId, Long friendId) {
+	public List<User> addFriend(Long userId, Long friendId) {
 		
 		User user= userRepository.findById(userId).get();
+		System.out.println(user.getUserId());
+		User friend = userRepository.findById(friendId).get();
+		System.out.println(friend.getUserId());
+		List<User> userFriends=user.getFriends();
+		if (userFriends.contains(friend)) {
+			
+			throw new UserException("Friend Already added");
+		}
+		else {
+			userFriends.add(friend);
+			user.setFriends(userFriends);
+					}
+		return userRepository.save(user).getFriends();
+
 		
-		List<Long> frindIds= user.getFriendIds();
-		frindIds.add(friendId);
-		System.out.println(frindIds.size());
-		user.setFriendIds(frindIds);
-		return userRepository.save(user);
 	}
 
 	@Override

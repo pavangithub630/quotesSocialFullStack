@@ -68,25 +68,26 @@ public class PostServiceImpl implements PostService{
 
 	@Override
 	public List<Post> getallPostsOfFriends(Long userId) {
-		
-		List<Long> userIds= userRepository.findById(userId).get().getFriendIds();
-		List<User> users= userRepository.findAllById(userIds);
-		
-		List<Post> posts= new ArrayList<Post>();
-		
-		for (User user : users) {
-			
-			for (Post post : user.getPosts()) {
-				posts.add(post);
-			}
-		}
-		
-		 List<Post> sortedPosts = posts
-	                .stream()
-	                .sorted(Comparator.comparing(Post::getLocalDateTime))
-	                .collect(Collectors.toList());
+//		
+//		List<Long> userIds= userRepository.findById(userId).get().getFriendIds();
+//		List<User> users= userRepository.findAllById(userIds);
+//		
+//		List<Post> posts= new ArrayList<Post>();
+//		
+//		for (User user : users) {
+//			
+//			for (Post post : user.getPosts()) {
+//				posts.add(post);
+//			}
+//		}
+//		
+//		 List<Post> sortedPosts = posts
+//	                .stream()
+//	                .sorted(Comparator.comparing(Post::getLocalDateTime))
+//	                .collect(Collectors.toList());
 		
 
+		List<Post> posts = postRepository.getlatestPostsOfFriends(userId);
 		
 		return posts;
 		

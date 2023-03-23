@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="logincontainer">
+        <div style="margin-bottom: 20px;"> 
+            <h1>Welcome back to quotes social</h1>
+        </div>
+        <mat-card class="example-card">
+            <h1 >Sign-in</h1>
+            <form class="login-form">
+               <div>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Email</mat-label>
+                    <input matInput [(ngModel)]="email" name="email"  placeholder="Ex. tonystark@gmail.com" value="">
+                </mat-form-field>
+               </div>
+               <div>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Password</mat-label>
+                    <input matInput [(ngModel)]="password" name="password" placeholder="Ex. password@123" value="">
+                </mat-form-field>
+               </div>
+
+               <div class="login-signup-buttons">
+                    
+                    <div class="login-signup-child">
+                        <button mat-button color="primary" type="submit" (click)="getLoginData()">Login</button>
+                    </div>
+                    <div class="login-signup-child">
+                        <button mat-button color="primary" routerLink="signup">Signup</button>
+                    </div>
+                    </div>
+                    </form>
+                    </mat-card>
+    </div>
+    
+      
+</div>

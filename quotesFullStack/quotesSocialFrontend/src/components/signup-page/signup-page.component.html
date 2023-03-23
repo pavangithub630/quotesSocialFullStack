@@ -1,0 +1,106 @@
+<div class="signup-container">
+    <div class="side-box">
+        <h1 class="sidebox-text">Sign up and get trend quotes from your friends</h1>
+    </div>
+    <div class="register-div" style="padding: 20px; padding-left: 70px;">
+        <div>
+            <h1 class="register" style="margin-left: 10px; font-weight: 250;">
+                Register
+            </h1>
+        </div>
+        <div>
+            <form #userReg="ngForm" (ngSubmit)="onSubmit(userReg)" class="reg-form">
+                <div class="reg-input-container">
+                    <div class="reg-form-child-div"  >
+                        <p>
+                            First name
+                        </p>
+                        <input type="text" palceholder="firstName" id="firstName" name="firstName" ngModel  class="reg-input">
+                    </div >
+                    <div class="reg-form-child-div"  >
+                        <p>
+                            Last name
+                        </p>
+                        <input type="text" palceholder="lastName" id="lastName" name="lastName" ngModel  class="reg-input">
+                    </div >
+                    
+                </div>
+                <div class="reg-input-container">
+                    <div class="reg-form-child-div"  >
+                        <p>
+                            Username
+                        </p>
+                        <input type="text" palceholder="userName" id="userName" name="userName" ngModel  class="reg-input">
+                    </div >
+                    <div class="reg-form-child-div"  >
+                        <p>
+                            Email
+                        </p>
+                        <input type="text" palceholder="email" id="email" name="email" ngModel  class="reg-input">
+                    </div >
+                    
+                </div>
+                <div class="reg-input-container">
+                    <div class="reg-form-child-div" style="margin: 20px; margin-left: 10px;" >
+                        <p>
+                            Date of birth
+                        </p>
+                        <input type="date" palceholder="dob" id="dob" name="dob" ngModel  class="reg-input">
+                    </div >
+                    <div class="reg-form-child-div"  style=" margin-right: 20px;" >
+                        <div class="reg-form-child-div"  >
+                            <p>
+                               Password
+                            </p>
+                            <input type="text"  palceholder="password" id="password" name="password" ngModel  class="reg-input">
+                        </div >
+                    
+                </div>
+                </div>
+                <div class="reg-input-container">
+
+
+                    <div class="reg-form-child-div" style="margin-top: 30px;">
+                        <p>
+                            Country
+                        </p>
+                        <mat-form-field class="example-full-width"  appearance="fill">
+                            <input type="text"
+                                   placeholder="country"
+                                   
+                                   id="country"
+                                   matInput
+                                   aria-label="Number"
+                                   class="reg-input"
+                                   [formControl]="myControl"
+                                   [matAutocomplete]="auto">
+                            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                              <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                                {{option}}
+                              </mat-option>
+                            </mat-autocomplete>
+                          </mat-form-field>
+                        
+                    </div >
+
+
+
+
+
+
+                    <div class="reg-form-child-div"  >
+                        <button type="submit" style="margin-top: 60px;margin-left: 150px;" mat-button color="accent">Submit</button>
+                      </div >
+                      
+                    
+                </div>
+                
+            </form>
+        </div>
+        
+        
+    </div>
+   
+
+
+</div>

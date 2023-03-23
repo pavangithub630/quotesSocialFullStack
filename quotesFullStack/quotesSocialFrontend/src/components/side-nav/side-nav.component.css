@@ -1,0 +1,37 @@
+.sidenav-container{
+    display: flex;
+    position: fixed;
+}
+.nav-box{
+    flex: 1;
+    width: 250px;
+    height: 100vh;
+    background-color: #74a4ed;
+    text-align: center;
+    padding-top: 20px;
+   
+   
+}
+.button-container{
+
+    padding-top: 100px;
+    padding-left: 40px;
+    text-align: left;
+
+}
+.nav-button{
+    cursor: pointer;
+  color: white;
+}
+.nav-button{
+    display: flex;
+    flex-direction: row;
+}
+.nav-button-font{
+    font-size: 20px;
+}
+.nav-icon{
+    width: 30px;
+    margin-bottom: 20px;
+    margin-right: 10px;
+}

@@ -1,0 +1,36 @@
+
+.signup-container{
+    display: flex;
+    position: fixed;
+}
+.side-box{
+    flex: 1;
+    max-width: 400px;
+    height: 100vh;
+    background-color: blue;
+    text-align: center;
+   
+   
+}
+
+.sidebox-text{
+    margin-top: 50%;
+    color: white;
+}
+.register-div{
+    margin-left: 120px;
+    margin-top: 40px;
+
+}
+.reg-input-container{
+    display: flex;
+   
+    
+}
+.reg-form-child-div{
+    margin: 10px;
+}
+.reg-input{
+    width: 250px;
+    
+}

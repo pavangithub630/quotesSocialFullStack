@@ -22,8 +22,15 @@ export class HomePageComponent implements OnInit {
       console.log(this.posts);
     })
 
-    
+  }
 
+  changeLikeStatus(index:any){
+   let userId= this.cookieService.get("userId")
+   let postId=this.posts[index].postId;
+    this.httpClient.post(`http://localhost:9111/likes/${userId}/${postId}`,null).subscribe((resp)=>{
+      console.log(resp);
+    })
+    this.posts[index].liked= ! this.posts[index].liked;
   }
 
 }

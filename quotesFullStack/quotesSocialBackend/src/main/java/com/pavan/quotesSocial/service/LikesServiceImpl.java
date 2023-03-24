@@ -25,26 +25,43 @@ public class LikesServiceImpl implements LikesService{
 	PostRepository postRepository;
 	@Autowired
 	UserService userService;
+	@Autowired
+	PostService postService;
+	
+	
 	@Override
-	public Likes likePost(long userid, long postId) {
+	public boolean likePost(long userid, long postId) {
 		try {
 			User user= userRepository.findById(userid).get();
 			Post post= postRepository.findById(postId).get();
-			boolean friendshipStatus= userService.checkFriendship(userid, post.getUser().getUserId());
-			if(friendshipStatus) {
-				Likes like = new Likes();
-				like.setPost(post);
-				like.setUser(user);
-				List<Likes> postLikes= post.getLikes();
-				postLikes.add(like);
-				post.setLikes(postLikes);
-				postRepository.save(post);
-				return like;
-
+			
+			List<Post> likedPost=postService.getmylikedposts(userid);
+			if (likedPost.contains(post)) {
+				Likes like= likesRepository.getLike(postId, userid);
+				likesRepository.delete(like);
+				return true;
 			}
 			else {
-				throw new UserException("You cannot like posts apart from your friends list");
+				
+				boolean friendshipStatus= userService.checkFriendship(userid, post.getUser().getUserId());
+				if(friendshipStatus) {
+					Likes like = new Likes();
+					like.setPost(post);
+					like.setUser(user);
+					List<Likes> postLikes= post.getLikes();
+					postLikes.add(like);
+					post.setLikes(postLikes);
+					postRepository.save(post);
+					return true;
+
+				}
+				else {
+					throw new UserException("You cannot like posts apart from your friends list");
+				}
+				
 			}
+			
+		
 						
 		} catch (Exception e) {
 			throw new LikesException(e.getMessage());

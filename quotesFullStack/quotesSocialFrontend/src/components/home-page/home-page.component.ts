@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-home-page',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private httpClient:HttpClient,private cookieService:CookieService) { }
 
-  ngOnInit(): void {
+  posts:any;
+  
+  ngOnInit():  void {
+   let  userId =this.cookieService.get('userId');
+    
+    this.httpClient.get(`http://localhost:9111/post/getallquotes/${userId}`).subscribe((data)=>{
+      
+      this.posts=data;
+      console.log(this.posts);
+    })
+
+    
+
   }
 
 }

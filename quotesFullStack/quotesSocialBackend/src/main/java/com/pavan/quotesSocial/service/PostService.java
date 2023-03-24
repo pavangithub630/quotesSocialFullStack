@@ -13,6 +13,7 @@ public interface PostService {
 	public abstract List<Post> getAllPotsts();
 	public abstract Post updatePost(Post post);
 	public abstract Post findPostbyPostId(long postId) throws PostExeption;
-	public abstract List<Post> getallPostsOfFriends(Long userId);
-	public abstract List<Post> getMyPosts(Long useId);
+	public abstract List<Post> getallPostsOfFriends(long userId);
+	public abstract List<Post> getMyPosts(long usreId);
+	public abstract List<Post> getmylikedposts(long userId);
 }

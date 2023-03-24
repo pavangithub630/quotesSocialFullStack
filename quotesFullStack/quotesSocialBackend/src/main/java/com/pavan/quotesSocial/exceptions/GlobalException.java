@@ -28,6 +28,13 @@ public class GlobalException {
 		return new ResponseEntity<>(responseError, HttpStatus.BAD_REQUEST);
 	}
 	
+	@ExceptionHandler(value =  LikesException.class )
+	ResponseEntity<ResponseError> postError(LikesException likesException, HttpServletRequest httpServletRequest) {
+		ResponseError responseError = new ResponseError(likesException.getMessage(), httpServletRequest.getRequestURI());
+		return new ResponseEntity<>(responseError, HttpStatus.BAD_REQUEST);
+	}
+	
+	
 	
 
 	

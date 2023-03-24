@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule ,inject} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { LoginPageComponent } from 'src/components/login-page/login-page.component';
 import { HomePageComponent } from 'src/components/home-page/home-page.component';
@@ -16,14 +16,20 @@ import { SignupPageComponent } from 'src/components/signup-page/signup-page.comp
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {ReactiveFormsModule} from '@angular/forms';
 import { MatIconModule } from "@angular/material/icon"; 
+import { CookieService } from 'ngx-cookie-service';
+import { SideNavComponent } from 'src/components/side-nav/side-nav.component';
+import { AddFriendsComponent } from 'src/components/add-friends/add-friends.component';
 
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    LoginPageComponent,HomePageComponent,
-    SignupPageComponent
+    AppComponent, SideNavComponent,
+    LoginPageComponent,
+    SignupPageComponent,
+    HomePageComponent,AddFriendsComponent
+    
+   
   ],
   imports: [
     BrowserModule,
@@ -34,10 +40,14 @@ import { MatIconModule } from "@angular/material/icon";
     HttpClientModule,
     MatAutocompleteModule,
     ReactiveFormsModule,
-    MatIconModule
+    MatIconModule,
+   
     
   ],
-  providers: [],
+ 
+  providers: [CookieService],
   bootstrap: [AppComponent],schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  
+
 })
 export class AppModule { }

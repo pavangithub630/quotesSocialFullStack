@@ -11,6 +11,7 @@ public interface UserService {
 	public abstract List<User> getallusers();
 	public abstract User updateUser(User user);
 	public abstract User findUserByUserId(long userId) throws UserException;
-	public abstract List<User> addFriend(Long userId,Long friendId);
+	public abstract List<User> addFriend(long userId,long friendId);
 	public abstract User userSignIn(String email,String password);
+	public abstract boolean checkFriendship(long userId,long friendId);
 }

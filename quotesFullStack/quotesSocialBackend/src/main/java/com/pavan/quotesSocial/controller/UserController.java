@@ -66,7 +66,7 @@ public class UserController {
 	}
 	
 	@PutMapping(value = "/add-freind/{userId}/{freindId}")
-	public ResponseEntity<List<User>> addUser(@PathVariable Long userId, @PathVariable Long freindId) {
+	public ResponseEntity<List<User>> addUser(@PathVariable long userId, @PathVariable long freindId) {
 
 		List<User> user2 = userService.addFriend(userId, freindId);
 		return new ResponseEntity<List<User>>(user2, HttpStatus.OK);
@@ -81,6 +81,12 @@ public class UserController {
 			return new ResponseEntity<User>(user,HttpStatus.OK);	
 	}
 	
+	@GetMapping(value = "/check-friendship-status/{userId}/{friendId}")
+	public ResponseEntity<Boolean> checkfriendship(@PathVariable long userId,@PathVariable long friendId){
+		
+		boolean status=userService.checkFriendship(userId, friendId);
+		return new ResponseEntity<Boolean>(status,HttpStatus.OK);
+	}
 	
 	
 	

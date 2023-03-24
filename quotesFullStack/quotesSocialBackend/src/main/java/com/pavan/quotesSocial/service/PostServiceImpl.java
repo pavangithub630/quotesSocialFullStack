@@ -37,7 +37,7 @@ public class PostServiceImpl implements PostService{
 	
 		Post post= modelMapper.map(postDto, Post.class);
 		User user=userRepository.findById(postDto.getUserId()).get();
-		post.setDate(LocalDate.of(2019, Month.AUGUST, 16));
+		post.setDate(LocalDate.now());
 		post.setTime(LocalTime.now());
 		post.setUser(user);
 		try {
@@ -67,7 +67,7 @@ public class PostServiceImpl implements PostService{
 	}
 
 	@Override
-	public List<Post> getallPostsOfFriends(Long userId) {
+	public List<Post> getallPostsOfFriends(long userId) {
 //		
 //		List<Long> userIds= userRepository.findById(userId).get().getFriendIds();
 //		List<User> users= userRepository.findAllById(userIds);
@@ -94,14 +94,27 @@ public class PostServiceImpl implements PostService{
 	}
 
 	@Override
-	public List<Post> getMyPosts(Long useId) {
+	public List<Post> getMyPosts(long userId) {
 
 		try {
-			List<Post> posts = userRepository.findById(useId).get().getPosts();
+			List<Post> posts = userRepository.findById(userId).get().getPosts();
 			return posts;
 		} catch (Exception e) {
 			throw new PostExeption(e.getMessage());
 		}
+	}
+
+	@Override
+	public List<Post> getmylikedposts(long userId) {
+		
+		try {
+			List<Post> posts= postRepository.getUserLikedPosts(userId);
+			return  posts;
+		} catch (Exception e) {
+			throw new PostExeption(e.getMessage());
+		}
+		
+	
 	}
 
 	

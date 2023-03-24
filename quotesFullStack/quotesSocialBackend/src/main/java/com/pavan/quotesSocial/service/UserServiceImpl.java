@@ -51,7 +51,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public List<User> addFriend(Long userId, Long friendId) {
+	public List<User> addFriend(long userId, long friendId) {
 		
 		User user= userRepository.findById(userId).get();
 		System.out.println(user.getUserId());
@@ -91,6 +91,23 @@ public class UserServiceImpl implements UserService {
 	
 	
 		
+	}
+
+	@Override
+	public boolean checkFriendship(long userId, long friendId) {
+	
+		try {
+			List<User> userFriends= userRepository.findById(userId).get().getFriends();
+			User checkFriend= userRepository.findById(friendId).get();
+			if (userFriends.contains(checkFriend)) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		} catch (Exception e) {
+			throw new UserException(e.getMessage());
+		}
 	}
 
 	

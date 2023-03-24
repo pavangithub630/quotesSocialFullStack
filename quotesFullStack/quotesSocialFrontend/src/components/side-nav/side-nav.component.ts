@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import {MatButtonModule} from '@angular/material/button';
+  import { Component, Inject, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+
+
 
 @Component({
   selector: 'app-side-nav',
@@ -7,10 +10,16 @@ import {MatButtonModule} from '@angular/material/button';
   styleUrls: ['./side-nav.component.css']
 })
 export class SideNavComponent implements OnInit {
+  
+  constructor(private router:Router) { }
 
-  constructor() { }
+ 
 
   ngOnInit(): void {
+  }
+
+  gotoFindFriends(){
+    this.router.navigate(["/","find-friends"])
   }
 
 }
